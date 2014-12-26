@@ -4,6 +4,17 @@ echo "Hello There!"
 echo "We're starting the Pidora Installation. Grab your helmets and hang on. This is going to be quick."
 echo
 echo "Installing packages. Now, this may take a while..."
+sudo apt-get install git libao-dev libgcrypt11-dev libgnutls-dev libfaad-dev libmad0-dev libjson0-dev make pkg-config
+# install FFmpeg manually from source
+git clone https://github.com/FFmpeg/FFmpeg.git -q
+cd FFmpeg
+./configure
+make clean
+# 'make' can take several hours
+make
+sudo make install
+cd ..
+
 sudo apt-get install git mpg123 python-feedparser libao-dev libmad0-dev libfaad-dev libgnutls-dev libjson0-dev libgcrypt11-dev pkg-config python-setuptools -y
 echo "Now configuring python environment..."
 wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
